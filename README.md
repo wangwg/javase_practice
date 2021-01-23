@@ -1,2 +1,2 @@
-# javase_practice
+# Java practice
 Java practice
