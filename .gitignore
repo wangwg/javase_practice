@@ -1,0 +1,42 @@
+#idea-git ignore
+
+# IntelliJ
+out/
+.idea
+*.iml
+gen/
+/.apt_generated/
+/.classpath
+/.factorypath
+/.project
+/.settings/
+/.springBeans
+/target/
+#/.gitignore
+/user-profile-analysis.iml
+/.idea
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+
+## Generated files
+.idea/**/contentModel.xml
+
+## Datasource
+.idea/**/dataSources
+.idea/**/dataSources.local.xml
+.idea/**/dataSources.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/dbnavigator.xml
+
+## Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+## Cmake
+cmake-build-*/
+
+
