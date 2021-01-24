@@ -12,10 +12,10 @@ public class AnnotationTest {
 		Currency cn = Currency.CN;
 		System.out.println(cn.code);
 
-		found: {
-			if (cn != null) {
-				break found;
-			}
-		}
+//		found: {
+//			if (cn != null) {
+//				break found;
+//			}
+//		}
 	}
 }

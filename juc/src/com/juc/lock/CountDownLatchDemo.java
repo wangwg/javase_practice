@@ -1,4 +1,4 @@
-package com.xiaogang.juc;
+package com.juc.lock;
 
 import java.util.concurrent.CountDownLatch;
 
