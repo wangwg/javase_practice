@@ -6,7 +6,8 @@ class Signleton {
 		System.out.println("Hello");
 	}
 
-	private static Signleton instance = null;
+	// volatile防止指令重排，在双重检查的懒汉式必须
+	private static volatile Signleton instance = null;
 
 	public static Signleton getInstance() {
 
