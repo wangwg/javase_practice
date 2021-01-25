@@ -12,28 +12,25 @@ import java.util.concurrent.atomic.LongAdder;
 public class LongAdderDemo {
 
     private static long count1 = 0L;
-    private static AtomicInteger count2 = new AtomicInteger(0);
-    private static LongAdder count3 = new LongAdder();
+    private static final AtomicInteger count2 = new AtomicInteger(0);
+    private static final LongAdder count3 = new LongAdder();
 
     public static void main(String[] args) {
 
         List<Thread> list = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
-            list.add(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int j = 0; j < 100000; j++) {
-                        synchronized (LongAdderDemo.class) {
-                            count1++;
-                        }
+            list.add(new Thread(() -> {
+                for (int j = 0; j < 100000; j++) {
+                    synchronized (LongAdderDemo.class) {
+                        count1++;
                     }
                 }
             }));
         }
 
         long start = System.currentTimeMillis();
-        list.forEach(t -> t.start());
+        list.forEach(Thread::start);
         list.forEach(t -> {
             try {
                 t.join();
@@ -48,18 +45,15 @@ public class LongAdderDemo {
         list = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
-            list.add(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int j = 0; j < 100000; j++) {
-                        count2.incrementAndGet();
-                    }
+            list.add(new Thread(() -> {
+                for (int j = 0; j < 100000; j++) {
+                    count2.incrementAndGet();
                 }
             }));
         }
 
         start = System.currentTimeMillis();
-        list.forEach(t -> t.start());
+        list.forEach(Thread::start);
         list.forEach(t -> {
             try {
                 t.join();
@@ -74,18 +68,15 @@ public class LongAdderDemo {
         list = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
-            list.add(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int j = 0; j < 100000; j++) {
-                        count3.increment();
-                    }
+            list.add(new Thread(() -> {
+                for (int j = 0; j < 100000; j++) {
+                    count3.increment();
                 }
             }));
         }
 
         start = System.currentTimeMillis();
-        list.forEach(t -> t.start());
+        list.forEach(Thread::start);
         list.forEach(t -> {
             try {
                 t.join();
@@ -95,7 +86,6 @@ public class LongAdderDemo {
         });
         end = System.currentTimeMillis();
         System.out.println("(end - start) = " + (end - start));
-
 
     }
 }

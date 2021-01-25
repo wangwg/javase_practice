@@ -50,6 +50,7 @@ class Ticket implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
+                // ReentrantLock必须手动释放锁，即使发生异常也不会释放。
                 lock.unlock();
             }
         }
